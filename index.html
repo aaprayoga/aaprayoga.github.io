@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Achmad Agung Prayoga — Penulis · Pembaca · Penerjemah</title>
+  <meta name="description" content="Achmad Agung Prayoga — penulis, pembaca, dan penerjemah dari Semarang. Menulis fiksi, esai, dan reportase. Menerjemahkan sastra ke dalam bahasa Indonesia."/>
+  <meta name="author" content="Achmad Agung Prayoga"/>
+  <meta property="og:title" content="Achmad Agung Prayoga — Penulis · Pembaca · Penerjemah"/>
+  <meta property="og:description" content="Penulis, pembaca, dan penerjemah dari Semarang. Fiksi, esai, reportase, dan terjemahan sastra."/>
+  <meta property="og:type" content="website"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink: #e2e8f0; --sepia: #a0aec0; --warm: #90cdf4;
+      --sand: #2d3748; --cream: #1a202c; --paper: #171923;
+      --blush: #63b3ed; --rust: #90cdf4; --highlight: #4299e1;
+      --rule: rgba(160,174,192,0.18);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--paper); color: var(--ink); font-family: 'Lora', Georgia, serif; line-height: 1.7; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 200px 200px; pointer-events: none; z-index: 999; opacity: 0.4;
+    }
+
+    /* NAV */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 4rem; border-bottom: 1px solid var(--rule); position: sticky; top: 0; background: rgba(23,25,35,0.93); backdrop-filter: blur(8px); z-index: 100; animation: fadeDown 0.6s ease both; }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: var(--warm); }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; flex-wrap: wrap; }
+    .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sepia); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--rust); }
+    .nav-right { display: flex; align-items: center; gap: 0.8rem; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.3rem; flex-direction: column; gap: 5px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--sepia); transition: all 0.3s; border-radius: 2px; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 57px; left: 0; right: 0; background: rgba(250,247,242,0.98); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); padding: 1.2rem 1.5rem; z-index: 99; flex-direction: column; gap: 0; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sepia); text-decoration: none; padding: 0.75rem 0; border-bottom: 1px solid var(--rule); transition: color 0.2s; }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--rust); }
+
+    /* HERO */
+    .hero { min-height: 88vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 6rem 4rem 4rem; gap: 4rem; position: relative; overflow: hidden; }
+    .hero::after { content: ''; position: absolute; right: -80px; top: 10%; width: 520px; height: 520px; background: radial-gradient(ellipse, rgba(144,205,244,0.08) 0%, transparent 70%); pointer-events: none; }
+    .hero-text { animation: fadeUp 0.8s 0.1s ease both; }
+    .hero-kicker { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blush); margin-bottom: 1.2rem; }
+    .hero-name { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5.5vw, 4.8rem); font-weight: 700; line-height: 1.05; color: var(--ink); margin-bottom: 1rem; }
+    .hero-name em { font-style: italic; color: var(--warm); }
+    .hero-roles { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+    .role-tag { font-family: 'DM Mono', monospace; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.8rem; border: 1px solid var(--blush); color: var(--warm); border-radius: 2px; }
+    .hero-bio { font-size: 1rem; color: var(--sepia); max-width: 440px; line-height: 1.85; margin-bottom: 2.4rem; }
+    .cta-row { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+    .btn-primary { background: var(--warm); color: var(--cream); padding: 0.75rem 1.8rem; font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: background 0.2s, transform 0.15s; display: inline-block; }
+    .btn-primary:hover { background: var(--rust); transform: translateY(-1px); }
+    .btn-ghost { color: var(--warm); font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid var(--blush); padding-bottom: 2px; transition: color 0.2s; }
+    .btn-ghost:hover { color: var(--rust); }
+    .hero-deco { animation: fadeUp 0.8s 0.3s ease both; display: flex; justify-content: center; }
+    .deco-frame { width: 300px; background: var(--sand); border-radius: 3px; position: relative; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 2.5rem 2rem; box-shadow: 8px 12px 40px rgba(60,30,10,0.12); }
+    .deco-frame::before { content: ''; position: absolute; inset: 10px; border: 1px solid rgba(120,80,40,0.2); border-radius: 2px; pointer-events: none; }
+    .deco-ornament { font-size: 2.2rem; color: var(--blush); line-height: 1; }
+    .deco-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: var(--sepia); line-height: 1.65; text-align: center; }
+    .deco-attr { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blush); }
+
+    /* SECTION BASE */
+    section { padding: 5rem 4rem; }
+    .section-header { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 0.8rem; }
+    .section-label { font-family: 'DM Mono', monospace; font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blush); white-space: nowrap; }
+    .section-rule { flex: 1; height: 1px; background: var(--rule); }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 3vw, 2.2rem); font-weight: 600; color: var(--ink); margin-bottom: 0.4rem; }
+    .section-sub { font-size: 0.92rem; color: var(--warm); font-style: italic; margin-bottom: 2.4rem; }
+
+    /* TAB FILTER */
+    .tab-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .tab-btn { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid var(--rule); background: transparent; color: var(--warm); border-radius: 2px; cursor: pointer; transition: all 0.2s; }
+    .tab-btn:hover, .tab-btn.active { background: var(--warm); color: var(--cream); border-color: var(--warm); }
+
+    /* CARD GRID */
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.6rem; }
+    .piece-card { background: var(--cream); border-radius: 3px; padding: 1.6rem 1.8rem; border: 1px solid rgba(120,80,40,0.1); transition: transform 0.25s, box-shadow 0.25s; text-decoration: none; color: inherit; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+    .piece-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--highlight); transition: height 0.3s; }
+    .piece-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(60,30,10,0.1); }
+    .piece-card:hover::before { height: 100%; }
+    .piece-card.hidden { display: none; }
+    .piece-card.featured { background: linear-gradient(135deg, var(--cream) 0%, #ede3d0 100%); border-color: rgba(160,82,45,0.22); }
+    .featured-badge { position: absolute; top: 1rem; right: 1rem; font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust); background: rgba(160,82,45,0.1); padding: 0.2rem 0.5rem; border-radius: 2px; }
+    .piece-type { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blush); margin-bottom: 0.55rem; }
+    .piece-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: var(--ink); line-height: 1.3; margin-bottom: 0.65rem; }
+    .piece-excerpt { font-size: 0.86rem; color: var(--sepia); line-height: 1.72; margin-bottom: 1.1rem; flex: 1; }
+    .piece-meta { display: flex; justify-content: space-between; align-items: center; }
+    .piece-pub { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--warm); letter-spacing: 0.08em; }
+    .piece-arrow { color: var(--blush); font-size: 0.95rem; transition: transform 0.2s; }
+    .piece-card:hover .piece-arrow { transform: translateX(4px); }
+
+    /* TRANSLATIONS */
+    #translations { background: var(--sand); }
+    .trans-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.5rem; }
+    .trans-card { background: var(--paper); border-radius: 3px; padding: 1.5rem 1.7rem; border: 1px solid rgba(120,80,40,0.12); transition: transform 0.25s, box-shadow 0.25s; display: grid; grid-template-columns: auto 1fr; gap: 1.1rem; align-items: start; text-decoration: none; color: inherit; }
+    .trans-card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(60,30,10,0.1); }
+    .trans-flag { font-size: 1.6rem; line-height: 1; padding-top: 0.1rem; }
+    .trans-langs { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; color: var(--blush); text-transform: uppercase; margin-bottom: 0.3rem; }
+    .trans-title { font-family: 'Playfair Display', serif; font-size: 0.98rem; font-weight: 600; color: var(--ink); margin-bottom: 0.28rem; line-height: 1.3; }
+    .trans-author { font-size: 0.82rem; font-style: italic; color: var(--warm); margin-bottom: 0.5rem; }
+    .trans-note { font-size: 0.81rem; color: var(--sepia); line-height: 1.6; }
+
+    /* NEWSLETTER */
+    #newsletter { background: var(--cream); }
+    .newsletter-desc { font-size: 1rem; color: var(--sepia); line-height: 1.85; margin-bottom: 1.8rem; }
+    .nl-group-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blush); margin: 2.8rem 0 1rem; }
+    .nl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+    .nl-card { background: var(--paper); border: 1px solid rgba(120,80,40,0.13); border-radius: 3px; padding: 1.6rem 1.8rem; text-decoration: none; display: flex; flex-direction: column; gap: 0.4rem; transition: box-shadow 0.2s, transform 0.2s; }
+    .nl-card:hover { box-shadow: 0 6px 24px rgba(60,40,10,0.1); transform: translateY(-2px); }
+    .nl-card-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-style: italic; color: var(--ink); }
+    .nl-card-meta { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--blush); letter-spacing: 0.08em; }
+    .nl-card-desc { font-size: 0.88rem; color: var(--sepia); line-height: 1.6; margin-top: 0.3rem; }
+    .nl-substack-link { display: inline-block; margin-top: 2rem; font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust); text-decoration: none; border-bottom: 1px solid var(--rust); padding-bottom: 2px; }
+    .nl-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-style: italic; color: var(--ink); margin-bottom: 0.4rem; }
+    .nl-handle { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; color: var(--blush); text-transform: uppercase; margin-bottom: 1rem; }
+    .nl-desc { font-size: 0.9rem; color: var(--sepia); line-height: 1.7; margin-bottom: 1.4rem; }
+    .nl-link { display: inline-block; background: var(--warm); color: var(--cream); padding: 0.6rem 1.4rem; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: background 0.2s; }
+    .nl-link:hover { background: var(--rust); }
+
+    /* ABOUT */
+    #about { background: var(--paper); border-top: 1px solid var(--rule); }
+    .about-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+    .about-photo-ring { width: 100px; height: 100px; border-radius: 50%; background: var(--sand); margin: 0 auto 1.8rem; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; border: 3px solid var(--blush); box-shadow: 0 4px 20px rgba(120,80,40,0.15); }
+    .about-text { font-size: 1rem; color: var(--sepia); line-height: 1.9; margin-bottom: 1.6rem; }
+    .about-links { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+    .about-link { font-family: 'DM Mono', monospace; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm); text-decoration: none; border-bottom: 1px solid var(--blush); padding-bottom: 2px; transition: color 0.2s; }
+    .about-link:hover { color: var(--rust); }
+
+    /* CONTACT */
+    #contact { background: var(--ink); color: var(--cream); text-align: center; }
+    #contact .section-label { color: var(--blush); }
+    .contact-sub { font-size: 1rem; color: rgba(232,220,200,0.65); margin-bottom: 2rem; font-style: italic; }
+    .contact-btn { display: inline-block; background: var(--highlight); color: #fff; padding: 0.9rem 2.4rem; font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: background 0.2s, transform 0.15s; border: none; cursor: pointer; }
+    .contact-btn:hover { background: var(--sand); transform: translateY(-2px); }
+
+    footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.05); padding: 1.4rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: rgba(232,220,200,0.3); letter-spacing: 0.08em; }
+    .footer-sig { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.82rem; color: rgba(212,169,106,0.45); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero { grid-template-columns: 1fr; padding: 5rem 1.5rem 3rem; min-height: auto; }
+      .hero-deco { display: none; }
+      section { padding: 3.5rem 1.5rem; }
+      .newsletter-inner { grid-template-columns: 1fr; gap: 2rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.2rem; }
+    }
+
+    /* LANG TOGGLE */
+    .lang-toggle { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; background: transparent; border: 1px solid var(--blush); color: var(--warm); padding: 0.3rem 0.8rem; border-radius: 2px; cursor: pointer; transition: all 0.2s; margin-left: 1rem; }
+    .lang-toggle:hover { background: var(--warm); color: var(--cream); border-color: var(--warm); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">Achmad Agung Prayoga</span>
+    <ul class="nav-links">
+      <li><a href="#writing" data-id="Tulisan" data-en="Writing">Tulisan</a></li>
+      <li><a href="#criticism" data-id="Kritik" data-en="Criticism">Kritik</a></li>
+      <li><a href="#journalism" data-id="Jurnalisme" data-en="Journalism">Jurnalisme</a></li>
+      <li><a href="#translations" data-id="Terjemahan" data-en="Translations">Terjemahan</a></li>
+      <li><a href="#publications" data-id="Redaksi &amp; Publikasi" data-en="Editorial &amp; Publications">Redaksi &amp; Publikasi</a></li>
+      <li><a href="#newsletter" data-id="Surel Berkala" data-en="Newsletter">Surel Berkala</a></li>
+      <li><a href="#about" data-id="Tentang" data-en="About">Tentang</a></li>
+      <li><a href="#contact" data-id="Kontak" data-en="Contact">Kontak</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">EN</button>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#writing" onclick="closeMenu()" data-id="Tulisan" data-en="Writing">Tulisan</a>
+    <a href="#criticism" onclick="closeMenu()" data-id="Kritik" data-en="Criticism">Kritik</a>
+    <a href="#journalism" onclick="closeMenu()" data-id="Jurnalisme" data-en="Journalism">Jurnalisme</a>
+    <a href="#translations" onclick="closeMenu()" data-id="Terjemahan" data-en="Translations">Terjemahan</a>
+    <a href="#publications" onclick="closeMenu()" data-id="Redaksi &amp; Publikasi" data-en="Editorial &amp; Publications">Redaksi &amp; Publikasi</a>
+    <a href="#newsletter" onclick="closeMenu()" data-id="Surel Berkala" data-en="Newsletter">Surel Berkala</a>
+    <a href="#about" onclick="closeMenu()" data-id="Tentang" data-en="About">Tentang</a>
+    <a href="#contact" onclick="closeMenu()" data-id="Kontak" data-en="Contact">Kontak</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-kicker" data-id="Portofolio · Semarang, Indonesia" data-en="Portfolio · Semarang, Indonesia">Portofolio · Semarang, Indonesia</p>
+      <h1 class="hero-name">Achmad<br><em>Agung</em><br>Prayoga</h1>
+      <div class="hero-roles">
+        <span class="role-tag" data-id="Penulis" data-en="Writer">Penulis</span>
+        <span class="role-tag" data-id="Pembaca" data-en="Reader">Pembaca</span>
+        <span class="role-tag" data-id="Penerjemah" data-en="Translator">Penerjemah</span>
+      </div>
+      <p class="hero-bio" data-id="Aku menulis fiksi, esai, dan reportase dalam bahasa Indonesia dan Inggris. Aku menerjemahkan karya sastra lintas bahasa. Aku mengulas buku, musik, dan gagasan. Tulisanku pernah dimuat di detikHot, LPM Edukasi, resensi.id, dan tempat-tempat lain." data-en="I write fiction, essays, and reportage in Indonesian and English. I translate literature across languages. I review books, music, and ideas. My work has appeared in detikHot, LPM Edukasi, resensi.id, and beyond.">
+        Aku menulis fiksi, esai, dan reportase dalam bahasa Indonesia dan Inggris.
+        Aku menerjemahkan karya sastra lintas bahasa. Aku mengulas buku, musik, dan gagasan.
+        Tulisanku pernah dimuat di detikHot, LPM Edukasi, resensi.id, dan tempat-tempat lain.
+      </p>
+      <div class="cta-row">
+        <a href="#writing" class="btn-primary" data-id="Baca Tulisanku" data-en="Read My Work">Baca Tulisanku</a>
+        <a href="#contact" class="btn-ghost" data-id="Hubungi aku →" data-en="Get in touch →">Hubungi aku →</a>
+      </div>
+    </div>
+    <div class="hero-deco">
+      <div class="deco-frame">
+        <div class="deco-ornament">❧</div>
+        <p class="deco-quote">"Translation is not a matter of words only: it is a matter of making intelligible a whole culture."</p>
+        <span class="deco-attr">— Anthony Burgess</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WRITING — Fiction & Essays -->
+  <section id="writing" style="background:var(--paper);">
+    <div class="section-header reveal">
+      <span class="section-label">§ 01</span>
+      <div class="section-rule"></div>
+    </div>
+    <h2 class="section-title reveal" data-id="Fiksi &amp; Esai" data-en="Fiction &amp; Essays">Fiksi &amp; Esai</h2>
+    <p class="section-sub reveal" data-id="Cerita pendek dan tulisan personal dalam bahasa Indonesia dan Inggris" data-en="Short stories and personal writing in Indonesian and English">Cerita pendek dan tulisan personal dalam bahasa Indonesia dan Inggris</p>
+    <div class="card-grid">
+
+      <a href="https://hot.detik.com/art/d-6193780/ambil-saja-paket-paket-itu" target="_blank" class="piece-card featured reveal">
+        <span class="featured-badge" data-id="Diterbitkan" data-en="Published">Diterbitkan</span>
+        <p class="piece-type" data-id="Cerpen · Indonesia" data-en="Short Story · Indonesian">Cerpen · Indonesia</p>
+        <h3 class="piece-title">Ambil Saja Paket-Paket Itu</h3>
+        <p class="piece-excerpt" data-id="Seorang kurir yang dituduh membakar dan membunuh menulis surat putus asa dari kantor polisi terpencil — meminta atasannya datang, atau setidaknya mengambil paket-paket itu." data-en="A courier wrongly accused of arson and murder writes a desperate letter from a remote police station — asking his supervisor to come, or at least to take the packages.">Seorang kurir yang dituduh membakar dan membunuh menulis surat putus asa dari kantor polisi terpencil — meminta atasannya datang, atau setidaknya mengambil paket-paket itu.</p>
+        <div class="piece-meta"><span class="piece-pub">detikHot · July 2022</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://www.lpmedukasi.com/2017/12/saat-saat-sebelum-kelas-berakhir.html" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Cerpen · Indonesia" data-en="Short Story · Indonesian">Cerpen · Indonesia</p>
+        <h3 class="piece-title">Saat-Saat Sebelum Kelas Berakhir</h3>
+        <p class="piece-excerpt" data-id="Narator duduk di pojok kelas yang isinya ia benci, membayangkan membakar semuanya, memikirkan Holden Caulfield — sampai kelas itu berakhir dengan cara yang paling buruk." data-en="A narrator sits at the back of a class full of people he despises, contemplating arson, until the class ends in the worst way.">Narator duduk di pojok kelas yang isinya ia benci, membayangkan membakar semuanya, memikirkan Holden Caulfield — sampai kelas itu berakhir dengan cara yang paling buruk.</p>
+        <div class="piece-meta"><span class="piece-pub">LPM Edukasi · Dec 2017</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://ruangsastra.com/15104/burhan/" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Cerpen · Indonesia" data-en="Short Story · Indonesian">Cerpen · Indonesia</p>
+        <h3 class="piece-title">Burhan</h3>
+        <p class="piece-excerpt" data-id="Cerita pendek yang diterbitkan di salah satu platform sastra penting Indonesia." data-en="A short story published in one of Indonesia's key literary platforms.">Cerita pendek yang diterbitkan di salah satu platform sastra penting Indonesia.</p>
+        <div class="piece-meta"><span class="piece-pub">Ruang Sastra · Sep 2018</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://biskuatsusu.wordpress.com/2023/02/02/berimajinasi/" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Fiksi · Indonesia" data-en="Fiction · Indonesian">Fiksi · Indonesia</p>
+        <h3 class="piece-title">Berimajinasi</h3>
+        <p class="piece-excerpt" data-id="Dani menyatakan cinta di SMP, ditolak, lalu mulai membolos agar tidak ada yang melihat matanya yang merah." data-en="Dani confesses his love in junior high, gets rejected, and begins skipping school so no one sees his red eyes.">Dani menyatakan cinta di SMP, ditolak, lalu mulai membolos agar tidak ada yang melihat matanya yang merah.</p>
+        <div class="piece-meta"><span class="piece-pub">biskuatsusu.wordpress.com · 2023</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://biskuatsusu.wordpress.com/2019/07/14/marzuki-membosankan-sekali/" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Fiksi · Indonesia" data-en="Fiction · Indonesian">Fiksi · Indonesia</p>
+        <h3 class="piece-title">Marzuki Membosankan Sekali</h3>
+        <p class="piece-excerpt" data-id="Tentang Marzuki yang tidak tertahankan — selalu muncul tepat saat teman-temannya sedang sibuk, bahkan sekadar memotong kuku." data-en="On the unbearable Marzuki, who turns up every time his friends are occupied — even with something as trivial as trimming their nails.">Tentang Marzuki yang tidak tertahankan — selalu muncul tepat saat teman-temannya sedang sibuk, bahkan sekadar memotong kuku.</p>
+        <div class="piece-meta"><span class="piece-pub">biskuatsusu.wordpress.com · 2019</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://biskuatsusu.wordpress.com/2019/07/10/ketika-di-burjo/" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Fiksi · Indonesia" data-en="Fiction · Indonesian">Fiksi · Indonesia</p>
+        <h3 class="piece-title">Ketika Di Burjo</h3>
+        <p class="piece-excerpt" data-id="Singgah di warung pinggir jalan, tanpa harapan apa-apa. Yang biasa ternyata menyimpan sesuatu yang lebih sulit untuk diberi nama." data-en="You stop at a roadside warung, expecting nothing. The ordinary turns out to be charged with something harder to name.">Singgah di warung pinggir jalan, tanpa harapan apa-apa. Yang biasa ternyata menyimpan sesuatu yang lebih sulit untuk diberi nama.</p>
+        <div class="piece-meta"><span class="piece-pub">biskuatsusu.wordpress.com · 2019</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://biskuatsusu.wordpress.com/2018/11/22/tigabelas-roti-isi/" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Fiksi · Indonesia" data-en="Fiction · Indonesian">Fiksi · Indonesia</p>
+        <h3 class="piece-title">Tigabelas Roti Isi</h3>
+        <p class="piece-excerpt" data-id="Ia memesan tiga belas roti isi dan duduk di dekat jendela — mengamati dan diamati, dalam pertemuan singkat yang menjadi sesuatu yang lebih." data-en="He orders thirteen sandwiches and settles by the window — observed, and observing, in a brief encounter that becomes something more.">Ia memesan tiga belas roti isi dan duduk di dekat jendela — mengamati dan diamati, dalam pertemuan singkat yang menjadi sesuatu yang lebih.</p>
+        <div class="piece-meta"><span class="piece-pub">biskuatsusu.wordpress.com · 2018</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://biskuatsusu.wordpress.com/2018/11/20/crawler/" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Fiksi · Indonesia" data-en="Fiction · Indonesian">Fiksi · Indonesia</p>
+        <h3 class="piece-title">Crawler</h3>
+        <p class="piece-excerpt" data-id="Seseorang merangkak keluar dari got pinggir jalan — setengah Spider-Man, setengah kadal — dengan mata liar di antara polisi yang bergegas dalam malam." data-en="A man crawls from a roadside drain — half Spider-Man, half lizard — wild-eyed and disoriented among the police rushing through the night.">Seseorang merangkak keluar dari got pinggir jalan — setengah Spider-Man, setengah kadal — dengan mata liar di antara polisi yang bergegas dalam malam.</p>
+        <div class="piece-meta"><span class="piece-pub">biskuatsusu.wordpress.com · 2018</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://resensi.id/identitas-dan-kebebasan/" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Esai · Indonesia" data-en="Essay · Indonesian">Esai · Indonesia</p>
+        <h3 class="piece-title">Identitas dan Kebebasan</h3>
+        <p class="piece-excerpt" data-id="Tentang hubungan antara identitas dan kebebasan — apa yang kita warisi, apa yang kita pilih, dan apa yang tak pernah benar-benar bisa kita pisahkan dari diri sendiri." data-en="On the relationship between identity and freedom — what we inherit, what we choose, and what we can never quite separate from ourselves.">Tentang hubungan antara identitas dan kebebasan — apa yang kita warisi, apa yang kita pilih, dan apa yang tak pernah benar-benar bisa kita pisahkan dari diri sendiri.</p>
+        <div class="piece-meta"><span class="piece-pub">resensi.id · Feb 2019</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://www.lpmedukasi.com/2018/08/adakah-resitasi-yang-lebih-mengenalkan.html" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Opini · Indonesia" data-en="Opinion · Indonesian">Opini · Indonesia</p>
+        <h3 class="piece-title">Adakah Resitasi yang Lebih Mengenalkan Budaya Akademik?</h3>
+        <p class="piece-excerpt" data-id="Tinjauan kritis terhadap tugas-tugas ospek — mempertanyakan apakah pompom dan pin benar-benar memperkenalkan budaya akademik, atau sekadar membebani mahasiswa baru yang sudah tertekan oleh biaya kuliah yang terus naik." data-en="A critical look at university orientation tasks — questioning whether pom-poms and pins serve academic culture or just burden freshmen already strained by rising tuition fees.">Tinjauan kritis terhadap tugas-tugas ospek — mempertanyakan apakah pompom dan pin benar-benar memperkenalkan budaya akademik, atau sekadar membebani mahasiswa baru yang sudah tertekan oleh biaya kuliah yang terus naik.</p>
+        <div class="piece-meta"><span class="piece-pub">LPM Edukasi · Aug 2018</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://www.lpmedukasi.com/2018/04/dilema-seorang-budi.html" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Kolom · Indonesia" data-en="Column · Indonesian">Kolom · Indonesia</p>
+        <h3 class="piece-title">Dilema Seorang Budi</h3>
+        <p class="piece-excerpt" data-id="Budi duduk di kantin kampus dengan piring-piring sisa makanan di depannya — dan mulai memikirkan mengapa menyia-nyiakan makanan adalah masalah yang lebih besar dari yang kita kira." data-en="Budi sits in a campus canteen surrounded by leftover food — and begins thinking about why wasting food is a bigger problem than we realize.">Budi duduk di kantin kampus dengan piring-piring sisa makanan di depannya — dan mulai memikirkan mengapa menyia-nyiakan makanan adalah masalah yang lebih besar dari yang kita kira.</p>
+        <div class="piece-meta"><span class="piece-pub">LPM Edukasi · Apr 2018</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://www.lpmedukasi.com/2018/09/hukuman-bagi-pria-yang-suka-mengingat.html" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Cerpen · Indonesia" data-en="Short Story · Indonesian">Cerpen · Indonesia</p>
+        <h3 class="piece-title">Hukuman bagi Pria yang Suka Mengingat-ingat</h3>
+        <p class="piece-excerpt" data-id="Seorang pria kehilangan dompetnya — dan bersamanya, satu-satunya potret ibunya yang sudah pergi. Sebuah cerpen tentang ingatan, kelupaan, dan kue yang rasanya berganti-ganti." data-en="A man loses his wallet — and with it, the only photograph of his late mother. A story about memory, forgetting, and a cake whose taste keeps changing.">Seorang pria kehilangan dompetnya — dan bersamanya, satu-satunya potret ibunya yang sudah pergi. Sebuah cerpen tentang ingatan, kelupaan, dan kue yang rasanya berganti-ganti.</p>
+        <div class="piece-meta"><span class="piece-pub">LPM Edukasi · Sep 2018</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://www.lpmedukasi.com/2022/03/cerpen-mengenai-sebuah-naskah.html" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Cerpen · Indonesia" data-en="Short Story · Indonesian">Cerpen · Indonesia</p>
+        <h3 class="piece-title">Mengenai Sebuah Naskah</h3>
+        <p class="piece-excerpt" data-id="Di Oxford, seorang narator menemukan naskah novel tak diterbitkan di kios buku bekas — dan mulai menelusuri siapa penulisnya, menemui seorang mantan jurnalis trauma perang dan seorang pembaca rakus, sebelum berakhir di tepi sungai Thames malam itu." data-en="In Oxford, a narrator finds an unpublished manuscript at a second-hand bookstall — and begins tracing its author, meeting a trauma-haunted former journalist and a voracious reader, before ending up alone on the Thames at night.">Di Oxford, seorang narator menemukan naskah novel tak diterbitkan di kios buku bekas — dan mulai menelusuri siapa penulisnya, menemui seorang mantan jurnalis trauma perang dan seorang pembaca rakus, sebelum berakhir di tepi sungai Thames malam itu.</p>
+        <div class="piece-meta"><span class="piece-pub">LPM Edukasi · Mar 2022</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://www.walhijateng.org/2021/11/15/cerpen-258-catatan-pasien-nomor-102/" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Cerpen · Fiksi Iklim · Indonesia" data-en="Short Story · Climate Fiction · Indonesian">Cerpen · Fiksi Iklim · Indonesia</p>
+        <h3 class="piece-title">Catatan Pasien Nomor 102</h3>
+        <p class="piece-excerpt" data-id="Enam lembar catatan tangan seorang aktivis lingkungan yang dirawat paksa di rumah sakit jiwa — mimpi-mimpinya tentang bumi yang sekarat mulai tak bisa dibedakan dari kenyataan." data-en="Six handwritten notes from an environmental activist forcibly committed to a psychiatric ward — his dreams of a dying earth begin to blur with reality.">Enam lembar catatan tangan seorang aktivis lingkungan yang dirawat paksa di rumah sakit jiwa — mimpi-mimpinya tentang bumi yang sekarat mulai tak bisa dibedakan dari kenyataan.</p>
+        <div class="piece-meta"><span class="piece-pub">WALHI Jateng · Nov 2021</span><span class="piece-arrow">→</span></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- CRITICISM -->
+  <section id="criticism" style="background:var(--cream);">
+    <div class="section-header reveal">
+      <span class="section-label">§ 02</span>
+      <div class="section-rule"></div>
+    </div>
+    <h2 class="section-title reveal" data-id="Kritik &amp; Resensi" data-en="Criticism &amp; Reviews">Kritik &amp; Resensi</h2>
+    <p class="section-sub reveal" data-id="Tentang buku, musik, dan hal-hal yang layak dipikirkan dengan serius" data-en="On books, music, and the things worth thinking about carefully">Tentang buku, musik, dan hal-hal yang layak dipikirkan dengan serius</p>
+    <div class="card-grid">
+
+      <a href="https://www.lpmedukasi.com/2020/05/panduan-memperoleh-ptsd.html" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Resensi Buku · Indonesia" data-en="Book Review · Indonesian">Resensi Buku · Indonesia</p>
+        <h3 class="piece-title">Panduan Memperoleh PTSD</h3>
+        <p class="piece-excerpt" data-id="Ulasan novel Kashmir karya Mirza Waheed — tentang seorang pemuda yang dipaksa merampok mayat-mayat pejuang sementara desanya satu per satu mengosongkan diri." data-en="A review of Mirza Waheed's The Collaborator — a Kashmir novel about a young man forced to rob the corpses of rebels while his village empties out around him.">Ulasan novel Kashmir karya Mirza Waheed — tentang seorang pemuda yang dipaksa merampok mayat-mayat pejuang sementara desanya satu per satu mengosongkan diri.</p>
+        <div class="piece-meta"><span class="piece-pub">LPM Edukasi · May 2020</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://www.lpmedukasi.com/2018/05/merayakan-keremeh-temehan_26.html" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Resensi Buku · Indonesia" data-en="Book Review · Indonesian">Resensi Buku · Indonesia</p>
+        <h3 class="piece-title">Merayakan Keremeh-temehan</h3>
+        <p class="piece-excerpt" data-id="Tentang <em>La Fête de l'insignifiance</em> Milan Kundera — perayaan hal-hal remeh, kumpulan lelucon filosofis, dan serangan miring terhadap kemegahan Soviet." data-en="On Milan Kundera's La Fête de l'insignifiance — a celebration of the trivial, a collection of philosophical jokes, and an oblique assault on Soviet pomposity.">Tentang <em>La Fête de l'insignifiance</em> Milan Kundera — perayaan hal-hal remeh, kumpulan lelucon filosofis, dan serangan miring terhadap kemegahan Soviet.</p>
+        <div class="piece-meta"><span class="piece-pub">LPM Edukasi · May 2018</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://www.lpmedukasi.com/2018/06/membaca-kisah-petualangan-sebuah-bus.html" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Resensi Buku · Indonesia" data-en="Book Review · Indonesian">Resensi Buku · Indonesia</p>
+        <h3 class="piece-title">Membaca Kisah Petualangan Sebuah Bus</h3>
+        <p class="piece-excerpt" data-id="Tentang <em>Semua Ikan di Langit</em> karya Ziggy — novel surealis tentang bus Damri yang terbang, alegori ketuhanan, dan godaan realisme magis." data-en="On Ziggy's Semua Ikan di Langit — a surreal novel about a flying Damri bus, divine allegory, and the seductions of magical realism.">Tentang <em>Semua Ikan di Langit</em> karya Ziggy — novel surealis tentang bus Damri yang terbang, alegori ketuhanan, dan godaan realisme magis.</p>
+        <div class="piece-meta"><span class="piece-pub">LPM Edukasi · Jun 2018</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://www.lpmedukasi.com/2017/12/the-gambler-permainan-belum-usai.html" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Resensi Musik · Indonesia" data-en="Music Review · Indonesian">Resensi Musik · Indonesia</p>
+        <h3 class="piece-title">The Gambler, Permainan Belum Usai</h3>
+        <p class="piece-excerpt" data-id="Ulasan lagu "The Gambler" milik Fun. — tentang mengapa balada indie-pop tentang keluarga, cinta, dan bertahan hidup ini akan melampaui era EDM yang pernah menenggelamkannya." data-en="A review of Fun.'s "The Gambler" — on why this indie-pop ballad about family, love, and survival will outlast the EDM era that overshadowed it.">Ulasan lagu "The Gambler" milik Fun. — tentang mengapa balada indie-pop tentang keluarga, cinta, dan bertahan hidup ini akan melampaui era EDM yang pernah menenggelamkannya.</p>
+        <div class="piece-meta"><span class="piece-pub">LPM Edukasi · Dec 2017</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://resensi.id/identitas-dan-kebebasan/" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Resensi Buku · Indonesia" data-en="Book Review · Indonesian">Resensi Buku · Indonesia</p>
+        <h3 class="piece-title">Identitas dan Kebebasan</h3>
+        <p class="piece-excerpt" data-id="Resensi atas buku &ldquo;Kekerasan dan Identitas&rdquo; karya Amartya Sen (Marjin Kiri, 2016) — menelusuri kritik Sen atas tesis benturan peradaban Huntington, dan bagaimana identitas tunggal menjadi akar kekerasan." data-en="A review of Amartya Sen&rsquo;s Identity and Violence (Marjin Kiri, 2016) — tracing Sen&rsquo;s critique of Huntington&rsquo;s clash of civilizations thesis, and how singular identity becomes the root of violence.">Resensi atas buku &ldquo;Kekerasan dan Identitas&rdquo; karya Amartya Sen (Marjin Kiri, 2016) — menelusuri kritik Sen atas tesis benturan peradaban Huntington, dan bagaimana identitas tunggal menjadi akar kekerasan.</p>
+        <div class="piece-meta"><span class="piece-pub">resensi.id · Feb 2019</span><span class="piece-arrow">→</span></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- JOURNALISM -->
+  <section id="journalism" style="background:var(--paper);">
+    <div class="section-header reveal">
+      <span class="section-label">§ 03</span>
+      <div class="section-rule"></div>
+    </div>
+    <h2 class="section-title reveal" data-id="Jurnalisme &amp; Fotografi" data-en="Journalism &amp; Photography">Jurnalisme &amp; Fotografi</h2>
+    <p class="section-sub reveal" data-id="Reportase dan karya visual dari kehidupan kampus dan gerakan mahasiswa" data-en="Reportage and visual work from campus life and student movements">Reportase dan karya visual dari kehidupan kampus dan gerakan mahasiswa</p>
+    <div class="card-grid">
+
+      <a href="https://www.lpmedukasi.com/2019/10/memoar-24-september.html" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Reportase · Indonesia" data-en="Reportage · Indonesian">Reportase · Indonesia</p>
+        <h3 class="piece-title">Memoar 24 September</h3>
+        <p class="piece-excerpt" data-id="Laporan langsung dari demonstrasi mahasiswa 24 September 2019 di DPRD Jawa Tengah — menelusuri panas, kerumunan, dan momen ketika Ganjar Pranowo keluar menemui para pengunjuk rasa." data-en="A first-person account of the 24 September 2019 student demonstrations at the Central Java DPRD — tracing the heat, the crowds, and the moment Ganjar Pranowo came out to meet the protesters.">Laporan langsung dari demonstrasi mahasiswa 24 September 2019 di DPRD Jawa Tengah — menelusuri panas, kerumunan, dan momen ketika Ganjar Pranowo keluar menemui para pengunjuk rasa.</p>
+        <div class="piece-meta"><span class="piece-pub">LPM Edukasi · Oct 2019</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://www.lpmedukasi.com/2019/09/geliat-suara-dan-gerakan-mahasiswa.html" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Fotografi · Indonesia" data-en="Photography · Indonesian">Fotografi · Indonesia</p>
+        <h3 class="piece-title">Sebuah Potret Gerakan Mahasiswa</h3>
+        <p class="piece-excerpt" data-id="Potret fotografis suara dan aksi mahasiswa — catatan kecil sebuah gerakan, dibuat dengan harapan bahwa perjuangan itu akan menghasilkan perubahan." data-en="A photographic portrait of student voices and protest — a small record of a movement, made with the hope that the struggle will produce change.">Potret fotografis suara dan aksi mahasiswa — catatan kecil sebuah gerakan, dibuat dengan harapan bahwa perjuangan itu akan menghasilkan perubahan.</p>
+        <div class="piece-meta"><span class="piece-pub">LPM Edukasi · Sep 2019</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://www.lpmedukasi.com/2019/08/hari-pertama-pbak-uin-walisongo.html" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Laporan Foto · Indonesia" data-en="Photo Report · Indonesian">Laporan Foto · Indonesia</p>
+        <h3 class="piece-title">Hari Pertama PBAK UIN Walisongo 2019</h3>
+        <p class="piece-excerpt" data-id="Montase fotografis hari pertama PBAK mahasiswa baru UIN Walisongo Semarang, Agustus 2019." data-en="A photographic montage of the first day of new student orientation at UIN Walisongo Semarang, August 2019.">Montase fotografis hari pertama PBAK mahasiswa baru UIN Walisongo Semarang, Agustus 2019.</p>
+        <div class="piece-meta"><span class="piece-pub">LPM Edukasi · Aug 2019</span><span class="piece-arrow">→</span></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- TRANSLATIONS -->
+  <section id="translations" style="background:var(--sand);">
+    <div class="section-header reveal">
+      <span class="section-label">§ 04</span>
+      <div class="section-rule"></div>
+    </div>
+    <h2 class="section-title reveal" data-id="Terjemahan" data-en="Translations">Terjemahan</h2>
+    <p class="section-sub reveal" data-id="Membawa suara-suara ke dalam bahasa Indonesia — semuanya diterjemahkan dari edisi bahasa Inggris" data-en="Carrying voices into Indonesian — all translated from English editions">Membawa suara-suara ke dalam bahasa Indonesia — semuanya diterjemahkan dari edisi bahasa Inggris</p>
+    <div class="trans-grid">
+
+      <a href="https://biskuatsusu.wordpress.com/2019/12/26/surat-kabar-prajurit-hasan-blassim/" target="_blank" class="trans-card reveal">
+        <span class="trans-flag">🇬🇧</span>
+        <div>
+          <p class="trans-langs">English → Indonesian</p>
+          <h3 class="trans-title">Surat Kabar Prajurit</h3>
+          <p class="trans-author">Hasan Blassim <span style="font-style:normal;font-size:0.75rem;color:var(--blush);">(orig. Arabic)</span></p>
+          <p class="trans-note" data-id="Cerita surealis tanpa kompromi dari penulis kontemporer Irak yang paling berani — diterjemahkan dari edisi bahasa Inggris ke dalam bahasa Indonesia." data-en="A surreal, unflinching story by Iraq's most daring contemporary writer — translated from the English edition into Indonesian.">Cerita surealis tanpa kompromi dari penulis kontemporer Irak yang paling berani — diterjemahkan dari edisi bahasa Inggris ke dalam bahasa Indonesia.</p>
+        </div>
+      </a>
+
+      <a href="https://biskuatsusu.wordpress.com/2019/08/14/kamar-pas-yukiko-motoya/" target="_blank" class="trans-card reveal">
+        <span class="trans-flag">🇬🇧</span>
+        <div>
+          <p class="trans-langs">English → Indonesian</p>
+          <h3 class="trans-title">Kamar Pas</h3>
+          <p class="trans-author">Yukiko Motoya <span style="font-style:normal;font-size:0.75rem;color:var(--blush);">(orig. Japanese)</span></p>
+          <p class="trans-note" data-id="Seorang pelanggan masuk ke kamar pas dan tak pernah benar-benar keluar — surrealisme domestik Motoya yang tenang, diterjemahkan dari versi bahasa Inggris ke dalam bahasa Indonesia." data-en="A customer enters a fitting room and never quite leaves — Motoya's quiet domestic surrealism translated from the English version into Indonesian.">Seorang pelanggan masuk ke kamar pas dan tak pernah benar-benar keluar — surrealisme domestik Motoya yang tenang, diterjemahkan dari versi bahasa Inggris ke dalam bahasa Indonesia.</p>
+        </div>
+      </a>
+
+      <a href="https://biskuatsusu.wordpress.com/2018/11/27/asap-chuck-palahniuk/" target="_blank" class="trans-card reveal">
+        <span class="trans-flag">🇺🇸</span>
+        <div>
+          <p class="trans-langs">English → Indonesian</p>
+          <h3 class="trans-title">Asap</h3>
+          <p class="trans-author">Chuck Palahniuk</p>
+          <p class="trans-note" data-id="Cerita tentang seorang pria yang setiap katanya telah menjadi komoditas — diterjemahkan dengan mempertahankan ritme prosa Palahniuk yang singkat dan penuh tekanan." data-en="A story about a man whose every word has become commodity — translated to preserve Palahniuk's clipped, pressurized prose rhythm.">Cerita tentang seorang pria yang setiap katanya telah menjadi komoditas — diterjemahkan dengan mempertahankan ritme prosa Palahniuk yang singkat dan penuh tekanan.</p>
+        </div>
+      </a>
+
+      <a href="https://biskuatsusu.wordpress.com/2019/02/19/tiada-yang-menghancurkan-sebuah-cerita-bagus-seperti-saksi-mata-matt-cashion/" target="_blank" class="trans-card reveal">
+        <span class="trans-flag">🇺🇸</span>
+        <div>
+          <p class="trans-langs">English → Indonesian</p>
+          <h3 class="trans-title">Tiada yang Menghancurkan Sebuah Cerita Bagus Seperti Saksi Mata</h3>
+          <p class="trans-author">Matt Cashion</p>
+          <p class="trans-note" data-id="Seorang ibu mengoreksi catatan fiksi anaknya tentang hidupnya — tentang ingatan, bercerita, dan siapa yang berhak menentukan apa yang benar-benar terjadi." data-en="A mother corrects her son's fictional account of her life — on memory, storytelling, and who gets to decide what really happened.">Seorang ibu mengoreksi catatan fiksi anaknya tentang hidupnya — tentang ingatan, bercerita, dan siapa yang berhak menentukan apa yang benar-benar terjadi.</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications" style="background:var(--paper);">
+    <div class="section-header reveal">
+      <span class="section-label">§ 05</span>
+      <div class="section-rule"></div>
+    </div>
+    <h2 class="section-title reveal" data-id="Redaksi &amp; Publikasi" data-en="Editorial &amp; Publications">Redaksi &amp; Publikasi</h2>
+    <p class="section-sub reveal" data-id="Karya-karya yang lahir dari ruang redaksi — sebagai penyunting, layouter, dan kontributor." data-en="Works born from the editorial room — as editor, layout artist, and contributor.">Karya-karya yang lahir dari ruang redaksi — sebagai penyunting, layouter, dan kontributor.</p>
+    <div class="pieces-grid">
+
+      <a href="https://www.pustakabahamut.my.id/2022/10/lady-macbeth-dari-mtsensk.html" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Buku · Penyunting" data-en="Book · Editor">Buku · Penyunting</p>
+        <h3 class="piece-title">Lady Macbeth dari Mtsensk</h3>
+        <p class="piece-excerpt" data-id="Kumpulan novelet dan cerpen terbaik Nikolai Leskov, diterjemahkan oleh Umar Qadafi — disunting oleh Achmad Agung Prayoga. Memuat lima cerita: Lady Macbeth dari Mtsensk, Seniman Rias, Kutu Baja, Prajurit Penjaga, dan Malaikat Tersegel." data-en="A collection of Nikolai Leskov's finest novellas and short stories, translated by Umar Qadafi — edited by Achmad Agung Prayoga. Contains five stories: Lady Macbeth of Mtsensk, The Makeup Artist, The Steel Flea, The Sentry, and The Sealed Angel.">Kumpulan novelet dan cerpen terbaik Nikolai Leskov, diterjemahkan oleh Umar Qadafi — disunting oleh Achmad Agung Prayoga. Memuat lima cerita: Lady Macbeth dari Mtsensk, Seniman Rias, Kutu Baja, Prajurit Penjaga, dan Malaikat Tersegel.</p>
+        <div class="piece-meta"><span class="piece-pub">Pustaka Bahamut · Nov 2022</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://issuu.com/edukasionline/docs/quantum_edisi_27-th.15-xii-2018" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Buletin · Redaktur Pelaksana · Layouter · Kontributor" data-en="Bulletin · Managing Editor · Layout Artist · Contributor">Buletin · Redaktur Pelaksana · Layouter · Kontributor</p>
+        <h3 class="piece-title">Quantum Edisi 27</h3>
+        <p class="piece-excerpt" data-id="Buletin LPM Edukasi edisi ke-27, tahun ke-15 — dikerjakan sebagai redaktur pelaksana yang mengelola proses editorial dari awal hingga akhir, sekaligus layouter dan penulis beberapa tulisan di dalamnya." data-en="LPM Edukasi's 27th bulletin, 15th year — managed as chief editor overseeing the full editorial process, while also serving as layout artist and contributing several pieces.">Buletin LPM Edukasi edisi ke-27, tahun ke-15 — dikerjakan sebagai redaktur pelaksana yang mengelola proses editorial dari awal hingga akhir, sekaligus layouter dan penulis beberapa tulisan di dalamnya.</p>
+        <div class="piece-meta"><span class="piece-pub">LPM Edukasi · Des 2018</span><span class="piece-arrow">→</span></div>
+      </a>
+
+      <a href="https://issuu.com/edukasionline/docs/bse_mas_geha_" target="_blank" class="piece-card reveal">
+        <p class="piece-type" data-id="Antologi · Kontributor" data-en="Anthology · Contributor">Antologi · Kontributor</p>
+        <h3 class="piece-title">BSE — Beranda Sastra Edukasi</h3>
+        <p class="piece-excerpt" data-id="Antologi sastra LPM Edukasi angkatan 2015 — berkontribusi sebagai penulis cerpen &ldquo;Di Halte Bus&rdquo; (hal. 47–54), sebuah cerita yang mengambil latar ruang tunggu dan perjalanan yang tidak sampai." data-en="LPM Edukasi's 2015 alumni literary anthology — contributed the short story &ldquo;Di Halte Bus&rdquo; (pp. 47–54), a story set in a bus shelter and a journey that never quite arrives.">Antologi sastra LPM Edukasi angkatan 2015 — berkontribusi sebagai penulis cerpen &ldquo;Di Halte Bus&rdquo; (hal. 47–54), sebuah cerita yang mengambil latar ruang tunggu dan perjalanan yang tidak sampai.</p>
+        <div class="piece-meta"><span class="piece-pub">LPM Edukasi · Okt 2022</span><span class="piece-arrow">→</span></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section id="newsletter" style="background:var(--cream);">
+    <div class="section-header reveal">
+      <span class="section-label">§ 06</span>
+      <div class="section-rule"></div>
+    </div>
+    <h2 class="section-title reveal">Closely Watched Everything</h2>
+    <p class="section-sub reveal" data-id="Substack berisi terjemahan, catatan membaca, dan fiksi — terbit tak tentu, selalu dengan niat" data-en="A Substack of translations, reading notes, and fiction — published irregularly, always with intention">Substack berisi terjemahan, catatan membaca, dan fiksi — terbit tak tentu, selalu dengan niat</p>
+
+    <p class="nl-group-label reveal" data-id="Terjemahan" data-en="Translations">Terjemahan</p>
+    <div class="nl-grid">
+      <a href="https://stepandadalus.substack.com/p/lubang" target="_blank" class="nl-card reveal">
+        <span class="nl-card-title">Lubang</span>
+        <span class="nl-card-meta">Mar 2026 · Hassan Blasim</span>
+        <span class="nl-card-desc" data-id="Dari &lt;em&gt;The Corpse Exhibition and Other Stories of Iraq&lt;/em&gt; (Penguin Books) — seorang pria terperosok ke lubang dan mendapati seorang tua renta jinni yang gemar memamah mayat dan berbicara tentang permainan semesta." data-en="From &lt;em&gt;The Corpse Exhibition and Other Stories of Iraq&lt;/em&gt; (Penguin Books) — a man falls into a hole and finds an old jinni who eats corpses and speaks of the universe as an endless game.">Dari <em>The Corpse Exhibition and Other Stories of Iraq</em> (Penguin Books) — seorang pria terperosok ke lubang dan mendapati seorang tua renta jinni yang gemar memamah mayat dan berbicara tentang permainan semesta.</span>
+      </a>
+      <a href="https://stepandadalus.substack.com/p/domba-pembangkang" target="_blank" class="nl-card reveal">
+        <span class="nl-card-title">Domba Pembangkang</span>
+        <span class="nl-card-meta">Mar 2026 · Cristina Peri Rossi</span>
+        <span class="nl-card-desc" data-id="Dari <em>The Museum of Useless Efforts</em> — seekor domba yang menolak melompat, dan insomnia yang tak berujung." data-en="From The Museum of Useless Efforts — a sheep that refuses to jump, and endless insomnia.">Dari <em>The Museum of Useless Efforts</em> — seekor domba yang menolak melompat, dan insomnia yang tak berujung.</span>
+      </a>
+      <a href="https://stepandadalus.substack.com/p/orang-gila" target="_blank" class="nl-card reveal">
+        <span class="nl-card-title">Orang Gila</span>
+        <span class="nl-card-meta">Okt 2022 · William Carlos Williams</span>
+        <span class="nl-card-desc" data-id="Dari <em>The Doctor Stories</em> — percakapan makan malam tentang seorang bocah sembilan tahun yang mencuri, dan makna kegilaan." data-en="From The Doctor Stories — a dinner conversation about a nine-year-old who steals, and the meaning of madness.">Dari <em>The Doctor Stories</em> — percakapan makan malam tentang seorang bocah sembilan tahun yang mencuri, dan makna kegilaan.</span>
+      </a>
+      <a href="https://stepandadalus.substack.com/p/cora" target="_blank" class="nl-card reveal">
+        <span class="nl-card-title">Cora</span>
+        <span class="nl-card-meta">Agu 2022 · William Faulkner</span>
+        <span class="nl-card-desc" data-id="Bagian 2 dari <em>As I Lay Dying</em> — kue yang tak terjual, perempuan sekarat, dan suara gergaji Cash di luar jendela." data-en="Part 2 of As I Lay Dying — unsold cakes, a dying woman, and the sound of Cash's saw outside the window.">Bagian 2 dari <em>As I Lay Dying</em> — kue yang tak terjual, perempuan sekarat, dan suara gergaji Cash di luar jendela.</span>
+      </a>
+      <a href="https://stepandadalus.substack.com/p/darl" target="_blank" class="nl-card reveal">
+        <span class="nl-card-title">Darl</span>
+        <span class="nl-card-meta">Agu 2022 · William Faulkner</span>
+        <span class="nl-card-desc" data-id="Bagian 1 dari <em>As I Lay Dying</em> — jalan setapak ladang kapas, peti mati yang diukur, dan dua bersaudara yang berjalan dalam satu baris." data-en="Part 1 of As I Lay Dying — a cotton field path, a coffin being measured, and two brothers walking in single file.">Bagian 1 dari <em>As I Lay Dying</em> — jalan setapak ladang kapas, peti mati yang diukur, dan dua bersaudara yang berjalan dalam satu baris.</span>
+      </a>
+      <a href="https://stepandadalus.substack.com/p/tiga-cerita-lydia-davis" target="_blank" class="nl-card reveal">
+        <span class="nl-card-title">Tiga Cerita Lydia Davis</span>
+        <span class="nl-card-meta">Mar 2022 · Lydia Davis</span>
+        <span class="nl-card-desc" data-id="Fiksi mini: teman-teman membosankan, seorang perempuan yang sebenarnya pria tua, dan sebuah bencana alam yang datang perlahan." data-en="Flash fiction: boring friends, a woman who is actually an old man, and a natural disaster that arrives slowly.">Fiksi mini: teman-teman membosankan, seorang perempuan yang sebenarnya pria tua, dan sebuah bencana alam yang datang perlahan.</span>
+      </a>
+      <a href="https://stepandadalus.substack.com/p/manusia-serigala-angela-carter" target="_blank" class="nl-card reveal">
+        <span class="nl-card-title">Manusia Serigala</span>
+        <span class="nl-card-meta">Mar 2022 · Angela Carter</span>
+        <span class="nl-card-desc" data-id="Dari <em>The Bloody Chamber</em> — dongeng gelap tentang seorang anak, serigala berbuntung, dan seorang nenek yang ternyata penyihir." data-en="From The Bloody Chamber — a dark fairy tale about a child, a maimed wolf, and a grandmother who turns out to be a witch.">Dari <em>The Bloody Chamber</em> — dongeng gelap tentang seorang anak, serigala berbuntung, dan seorang nenek yang ternyata penyihir.</span>
+      </a>
+    </div>
+
+    <p class="nl-group-label reveal" data-id="Catatan Membaca" data-en="Reading Notes">Catatan Membaca</p>
+    <div class="nl-grid">
+      <a href="https://stepandadalus.substack.com/p/pak-tua-malang-yang-kesepian" target="_blank" class="nl-card reveal">
+        <span class="nl-card-title">Pak Tua Malang yang Kesepian</span>
+        <span class="nl-card-meta">Mar 2026 · Catatan Membaca #3</span>
+        <span class="nl-card-desc" data-id="Membaca &lt;em&gt;Pak Tua yang Membaca Kisah Cinta&lt;/em&gt; karya Luis Sepúlveda — tentang kolonialisme sebagai muasal kemalangan, Amazon yang dirampas, dan seorang tua yang memilih membaca kisah cinta penuh penderitaan sebagai obat dari kesepian." data-en="Reading Luis Sepúlveda's &lt;em&gt;The Old Man Who Read Love Stories&lt;/em&gt; — on colonialism as the root of all misfortune, a plundered Amazon, and an old man who turns to suffering love stories as a cure for loneliness.">Membaca <em>Pak Tua yang Membaca Kisah Cinta</em> karya Luis Sepúlveda — tentang kolonialisme sebagai muasal kemalangan, Amazon yang dirampas, dan seorang tua yang memilih membaca kisah cinta penuh penderitaan sebagai obat dari kesepian.</span>
+      </a>
+      <a href="https://stepandadalus.substack.com/p/tentang-panduan-bercerita-mark-twain" target="_blank" class="nl-card reveal">
+        <span class="nl-card-title">Tentang 'Panduan Bercerita' Mark Twain</span>
+        <span class="nl-card-meta">Mar 2022 · Catatan Membaca #2</span>
+        <span class="nl-card-desc" data-id="Menelusuri perbedaan cerita humor, jenaka, dan lucu — dari Mark Twain ke Carver, Eka Kurniawan, dan Cortázar." data-en="Tracing the difference between humorous, witty, and comic storytelling — from Mark Twain to Carver, Eka Kurniawan, and Cortázar.">Menelusuri perbedaan cerita humor, jenaka, dan lucu — dari Mark Twain ke Carver, Eka Kurniawan, dan Cortázar.</span>
+      </a>
+      <a href="https://stepandadalus.substack.com/p/tentang-as-i-lay-dying" target="_blank" class="nl-card reveal">
+        <span class="nl-card-title">Tentang As I Lay Dying</span>
+        <span class="nl-card-meta">Mar 2022 · Catatan Membaca #1</span>
+        <span class="nl-card-desc" data-id="Vardaman yang menyamakan ibunya dengan ikan, dan Darl yang terlalu tahu terlalu banyak — membaca Faulkner yang sulit dan menakutkan." data-en="Vardaman who equates his mother with a fish, and Darl who knows too much — reading Faulkner, difficult and unsettling.">Vardaman yang menyamakan ibunya dengan ikan, dan Darl yang terlalu tahu terlalu banyak — membaca Faulkner yang sulit dan menakutkan.</span>
+      </a>
+    </div>
+
+    <a href="https://stepandadalus.substack.com/" target="_blank" class="nl-substack-link reveal" data-id="Buka Substack →" data-en="Open Substack →">Buka Substack →</a>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-inner">
+      <div class="section-header reveal" style="justify-content:center;">
+        <span class="section-label">§ 07</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="about-photo-ring reveal">📖</div>
+      <h2 class="section-title reveal" data-id="Tentang" data-en="About">Tentang</h2>
+      <p class="about-text reveal" data-id="Aku Achmad Agung Prayoga — penulis, pembaca, dan penerjemah, lahir di Semarang pada 11 Juli 1999. Aku kuliah di Pendidikan Bahasa Inggris UIN Walisongo, di mana aku menghabiskan tahun-tahun penting di pers mahasiswa LPM Edukasi — menulis fiksi, resensi, reportase, dan opini — sebelum akhirnya memilih keluar. Terjemahanku membawa penulis seperti Hasan Blassim, Yukiko Motoya, dan Chuck Palahniuk ke dalam bahasa Indonesia. Fiksi-fiksiku pernah dimuat di detikHot dan blog-blog sastra. Aku juga bagian dari komunitas baca Bacabukumu, dan pernah mengelola Toko Buku Dahlia, toko buku baru dan bekas yang kini sudah tutup." data-en="I'm Achmad Agung Prayoga — a writer, reader, and translator born in Semarang on 11 July 1999. I studied English Language Education at UIN Walisongo, where I spent formative years in the student literary press LPM Edukasi — writing fiction, reviews, reportage, and opinion — before eventually dropping out. My translations bring writers like Hasan Blassim, Yukiko Motoya, and Chuck Palahniuk into Indonesian. My fiction has appeared in detikHot and literary blogs. I am also part of the reading community Bacabukumu and previously ran Toko Buku Dahlia, a new and secondhand bookshop.">
+        Aku Achmad Agung Prayoga — penulis, pembaca, dan penerjemah, lahir di Semarang pada 11 Juli 1999.
+        Aku kuliah di Pendidikan Bahasa Inggris UIN Walisongo, di mana aku menghabiskan tahun-tahun penting di pers mahasiswa LPM Edukasi — menulis fiksi, resensi, reportase, dan opini — sebelum akhirnya memilih keluar.
+        Terjemahanku membawa penulis seperti Hasan Blassim, Yukiko Motoya, dan Chuck Palahniuk ke dalam bahasa Indonesia.
+        Fiksi-fiksiku pernah dimuat di detikHot dan blog-blog sastra. Aku juga bagian dari komunitas baca Bacabukumu, dan pernah mengelola Toko Buku Dahlia, toko buku baru dan bekas yang kini sudah tutup.
+      </p>
+      <div class="about-links reveal">
+        <a href="https://stepandadalus.substack.com/" target="_blank" class="about-link">Substack</a>
+        <a href="https://biskuatsusu.wordpress.com/" target="_blank" class="about-link">WordPress</a>
+        <a href="https://hot.detik.com/art/d-6193780/ambil-saja-paket-paket-itu" target="_blank" class="about-link">detikHot</a>
+        <a href="https://www.lpmedukasi.com" target="_blank" class="about-link">LPM Edukasi</a>
+        <a href="https://resensi.id/identitas-dan-kebebasan/" target="_blank" class="about-link">resensi.id</a>
+        <a href="https://resensi.id/achmad-agung-prayoga/" target="_blank" class="about-link">Resensi.id</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-header reveal" style="justify-content:center;">
+      <span class="section-label">§ 08</span>
+    </div>
+    <h2 class="section-title reveal" style="color:var(--sand);text-align:center;margin-bottom:0.6rem;" data-id="Hubungi Aku" data-en="Get in Touch">Hubungi Aku</h2>
+    <p class="contact-sub reveal" data-id="Komisi, terjemahan, kolaborasi, atau rekomendasi buku." data-en="Commissions, translation work, collaboration, or a book recommendation.">Komisi, terjemahan, kolaborasi, atau rekomendasi buku.</p>
+    <a id="contact-email" href="#" class="contact-btn reveal" data-id="Kirim Email →" data-en="Send Email →">Kirim Email →</a>
+  </section>
+
+  <footer>
+    <span class="footer-copy" data-id="© 2025 Achmad Agung Prayoga · Hak cipta dilindungi" data-en="© 2025 Achmad Agung Prayoga · All rights reserved">© 2025 Achmad Agung Prayoga · Hak cipta dilindungi</span>
+    <span class="footer-sig" data-id="Penulis · Pembaca · Penerjemah" data-en="Writer · Reader · Translator">Penulis · Pembaca · Penerjemah</span>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 50);
+        }
+      });
+    }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Reveal email (Cloudflare-proof — no @ or .com in source)
+    window.addEventListener('DOMContentLoaded', function() {
+      const p = ['a','p','a','c','h','m','a','d'];
+      const d = ['g','m','a','i','l',String.fromCharCode(46),'c','o','m'];
+      const email = p.join('') + String.fromCharCode(64) + d.join('');
+      const el = document.getElementById('contact-email');
+      if (el) { el.href = 'mail' + 'to:' + email; }
+    });
+
+    // Hamburger menu
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.getElementById('hamburger');
+      menu.classList.toggle('open');
+      btn.classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('open');
+    }
+
+    // Language toggle
+    let currentLang = 'id';
+    function toggleLang() {
+      currentLang = currentLang === 'id' ? 'en' : 'id';
+      const btn = document.getElementById('langToggle');
+      btn.textContent = currentLang === 'id' ? 'EN' : 'ID';
+      document.querySelectorAll('[data-id]').forEach(el => {
+        const text = el.getAttribute('data-' + currentLang);
+        if (text) el.innerHTML = text;
+      });
+      document.documentElement.lang = currentLang === 'id' ? 'id' : 'en';
+    }
+  </script>
+</body>
+</html>
